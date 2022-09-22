@@ -106,7 +106,7 @@ export const App = () => {
       <Container>
         <ToastContainer autoClose={1500} theme={"colored"} />
 
-        <h1>Phonebook HW-7<span style={{ fontSize: "20px" }}> (with RTK Query)</span></h1>
+        <h1>Phonebook HW-8<span style={{ fontSize: "20px" }}> (with ...)</span></h1>
 
         <ContactForm
           onSubmit={formSubmitHandler}
