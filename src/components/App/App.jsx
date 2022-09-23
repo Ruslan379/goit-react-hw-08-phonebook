@@ -84,6 +84,7 @@ export const App = () => {
   //   password: "ghf479lkf"
   // };
 
+  //! Залогиненый контакт
   // const user4 = {
   //   name: "Sonya Furkina",
   //   email: "furkina@gmail.com",
