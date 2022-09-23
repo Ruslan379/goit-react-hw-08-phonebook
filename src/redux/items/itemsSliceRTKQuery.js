@@ -12,7 +12,7 @@ export const itemsAPIbyRTKQuery = createApi({
   endpoints: (builder) => ({
     getAddAllContacts: builder.query({
       // query: (name) => `/contacts/${name}`,
-      query: () => `/contacts`,
+      query: () => `/contacts`, //! +-+-+-
       // providesTags: ["Contacts"],
       providesTags: (result) =>
         result

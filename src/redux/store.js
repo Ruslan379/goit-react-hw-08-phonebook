@@ -4,6 +4,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { filterSlice } from 'redux/filter/filterSlice';
 
 import { itemsAPIbyRTKQuery } from 'redux/items/itemsSliceRTKQuery';
+import { authAPIbyRTKQuery } from 'redux/auth/authSliceRTKQuery';
 
 
 
@@ -13,9 +14,11 @@ import { itemsAPIbyRTKQuery } from 'redux/items/itemsSliceRTKQuery';
 export const store = configureStore({
     reducer: {
         [itemsAPIbyRTKQuery.reducerPath]: itemsAPIbyRTKQuery.reducer,
-        filter: filterSlice.reducer
+        filter: filterSlice.reducer,
+        [authAPIbyRTKQuery.reducerPath]: authAPIbyRTKQuery.reducer,
     },
-    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), itemsAPIbyRTKQuery.middleware],
+    // middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), itemsAPIbyRTKQuery.middleware],
+    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), itemsAPIbyRTKQuery.middleware, authAPIbyRTKQuery.middleware],
 });
 
 //! ++++++++++++++++++++++++++++ ВЕСЬ State +++++++++++++++++++++++++++++++++++

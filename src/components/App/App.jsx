@@ -1,3 +1,4 @@
+import { useEffect } from 'react'; //! +++
 // import { useEffect, useState } from 'react'; //! +++
 import { useDispatch, useSelector } from "react-redux"; //! +++
 
@@ -27,13 +28,21 @@ import {
   usePostAddContactMutation,
   // useDeleteContactMutation
 } from 'redux/items/itemsSliceRTKQuery'; 
+
+//? +++++++++++
+import {
+  // useFetchCurrentUserQuery,
+  // useRegisterMutation,
+  useLogInMutation,
+  // useLogOutMutation
+} from 'redux/auth/authSliceRTKQuery';
 //________________________________________________________________________
 
 export const App = () => {
   //! +++++++ Хук useDispatch +++++++++++++
   const dispatch = useDispatch();
 
-
+  // const [token, setToken] = useState(null);
 
   //! ++++++++++++++++++ Хук useSelector  ++++++++++++++++++
   //! читает данные из state Redux-хранилища и подписывается на их обновление
@@ -52,6 +61,79 @@ export const App = () => {
         };
       });
 
+  
+  
+//? +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+  //! --------------Добавленные user -------------------
+  // const user1 = {
+  //   name: "Ruslan Fate",
+  //   email: "fate@gmail.com",
+  //   password: "poi098lkj",
+  //   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJkOGQxNzk2NTEyNDAwMTU2NjQ3NzEiLCJpYXQiOjE2NjM5MzU3MDN9.Ja86dGO7ckcKceXHZbEH780ZCW1RhnCwcdzLpo8nvUQ"
+  // };
+
+  // const user2 = {
+  //   name: "Egor Rudik",
+  //   email: "egor@gmail.com",
+  //   password: "rty543yui"
+  // };
+
+  // const user3 = {
+  //   name: "Sergej Fedorchuk",
+  //   email: "fedorchuk@gmail.com",
+  //   password: "ghf479lkf"
+  // };
+
+  // const user4 = {
+  //   name: "Sonya Furkina",
+  //   email: "furkina@gmail.com",
+  //   password: "nbhy7564kjuy"
+  // };
+  
+  
+  //! -------------- Создать нового пользователя -------------------
+  // const [addUser] = useRegisterMutation();
+  
+  // const user4 = {
+  //   name: "Sonya Furkina",
+  //   email: "furkina@gmail.com",
+  //   password: "nbhy7564kjuy",
+  //   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJkYTc4Njk2NTEyNDAwMTU2NjRmZTYiLCJpYXQiOjE2NjM5MzYzOTB9.buFFKqaIUZcEFEE2Mhi3c8MuYJtKWWmYRccYZoeKxkk"
+  // };
+  
+  // useEffect(() => {
+  //   addUser(user4).unwrap()
+  // }, []);
+  //! --------------Залогинить пользователя -------------------
+  // const [userlogIn, { data: dataLogin }] = useLogInMutation();
+  const [userlogIn] = useLogInMutation();
+
+  useEffect(() => {
+    const user2logIn = {
+    email: "furkina@gmail.com",
+    password: "nbhy7564kjuy",
+  };
+    
+    userlogIn(user2logIn).unwrap();
+    // setToken(dataLogin);
+    // console.log( "token:", token); //!
+  }, [userlogIn]);
+
+    // console.log( "dataLogin:", dataLogin); //!
+  // 
+  // console.log( "token:", token); //!
+//! --------------Получить информацию о текущем пользователе -------------------
+  // const { data: userInfo } = useFetchCurrentUserQuery();
+  // console.log( "userInfo:", userInfo); //!
+
+//! -------------- Разлогинить пользователя -------------------
+  // const [userlogOut] = useLogOutMutation();
+
+  // useEffect(() => {
+  //   userlogOut("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJkYTc4Njk2NTEyNDAwMTU2NjRmZTYiLCJpYXQiOjE2NjM5Mzc2NzZ9.T6h44Ayevsukp8w40r50D_pPhWtt_1z0GhU3bEPnzuk").unwrap()
+  // }, [userlogOut]);
+  
+  //? ___________________________________________________________
 
 
 //!--------------------------- POST with RTK Query ---------------------------------
