@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { nanoid } from 'nanoid';
-
 import { Spinner } from 'components/Spinner/Spinner';
 
 import css from 'components/ContactForm/ContactForm.module.css' 
@@ -18,7 +16,6 @@ export const ContactForm = ({ onSubmit, addition }) => {
   const [number, setNumber] = useState('');
 
 
-  const contactInputId = nanoid();
   
 
 // * +++++++++++++++++++++++++++ МЕТОДЫ ++++++++++++++++++++++++++++++++++
@@ -69,10 +66,7 @@ export const ContactForm = ({ onSubmit, addition }) => {
         onSubmit={handleSubmit}
       >
 
-        <label
-          className={css.FormLabel}
-          htmlFor={contactInputId}
-        >
+        <label className={css.FormLabel}>
             {addition ? "Wait for add..." : "Name"}
             <br />
             <input
@@ -84,15 +78,11 @@ export const ContactForm = ({ onSubmit, addition }) => {
               required
               value={name}
               onChange={handleChange}
-              id={contactInputId}
             />
           </label>
           <br />
 
-        <label
-          className={css.FormLabel}
-          htmlFor={contactInputId}
-        >
+        <label className={css.FormLabel}>
             {addition ? "..." : "Number"}
             <br />
             <input
@@ -104,7 +94,6 @@ export const ContactForm = ({ onSubmit, addition }) => {
               required
               value={number}
               onChange={handleChange}
-              id={contactInputId}
             />
           </label>
           <br />
