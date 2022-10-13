@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/';
+axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/'; //! РЕПЕТА
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-// Utility to add JWT
+
+//! Utility to add JWT
 const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// Utility to remove JWT
+//! Utility to remove JWT
 const clearAuthHeader = () => {
     axios.defaults.headers.common.Authorization = '';
 };
@@ -17,6 +19,7 @@ const clearAuthHeader = () => {
  * POST @ /users/signup
  * body: { name, email, password }
  */
+//! Создать нового пользователя
 export const register = createAsyncThunk(
     'auth/register',
     async (credentials, thunkAPI) => {
@@ -35,6 +38,7 @@ export const register = createAsyncThunk(
  * POST @ /users/login
  * body: { email, password }
  */
+//! Залогинить пользователя
 export const logIn = createAsyncThunk(
     'auth/login',
     async (credentials, thunkAPI) => {
@@ -53,6 +57,7 @@ export const logIn = createAsyncThunk(
  * POST @ /users/logout
  * headers: Authorization: Bearer token
  */
+//! Разлогинить пользователя
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         await axios.post('/users/logout');
@@ -66,7 +71,12 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 /*
  * GET @ /users/current
  * headers: Authorization: Bearer token
+ * *
+ * 1. Забираем токен из стейта через getState()
+ * 2. Если токена нет, выходим не выполняя никаких операций
+ * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
  */
+//! Получить информацию о текущем пользователе
 export const refreshUser = createAsyncThunk(
     'auth/refresh',
     async (_, thunkAPI) => {
@@ -76,16 +86,45 @@ export const refreshUser = createAsyncThunk(
 
         if (persistedToken === null) {
             // If there is no token, exit without performing any request
+            console.log('Токена нет, уходим из refreshUser'); //!
             return thunkAPI.rejectWithValue('Unable to fetch user');
         }
 
         try {
             // If there is a token, add it to the HTTP header and perform the request
             setAuthHeader(persistedToken);
-            const res = await axios.get('/users/me');
+            const res = await axios.get('/users/current');
             return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
+
+
+//? +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  //! --------------Добавленные user -------------------
+  // const user1 = {
+  //   name: "Ruslan Fate",
+  //   email: "fate@gmail.com",
+  //   password: "poi098lkj",
+  // };
+
+  // const user2 = {
+  //   name: "Egor Rudik",
+  //   email: "egor@gmail.com",
+  //   password: "rty543yui"
+  // };
+
+  // const user3 = {
+  //   name: "Sergej Fedorchuk",
+  //   email: "fedorchuk@gmail.com",
+  //   password: "ghf479lkf"
+  // };
+
+  //! Залогиненый контакт
+  // const user4 = {
+  //   name: "Sonya Furkina",
+  //   email: "furkina@gmail.com",
+  //   password: "nbhy7564kjuy"
+  // };
