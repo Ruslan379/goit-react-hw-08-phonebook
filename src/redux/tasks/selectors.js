@@ -1,4 +1,5 @@
-export const selectLoading = state => state.tasks.loading;
+// export const selectLoading = state => state.tasks.loading; //! Ошибка Репеты
+export const selectLoading = state => state.tasks.isLoading;
 
 export const selectFilter = state => state.tasks.filter;
 

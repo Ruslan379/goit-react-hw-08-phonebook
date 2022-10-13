@@ -31,11 +31,14 @@ export const addTask = createAsyncThunk(
 // DELETE @ /tasks/:id
 export const deleteTask = createAsyncThunk(
     'tasks/deleteTask',
-    async (taskId, thunkAPI) => {
+    async (contactId, thunkAPI) => {
         try {
-            console.log("taskId", taskId); //!
-            const response = await axios.delete(`/contacts/${taskId}`);
-            return response.data;
+            console.log("contactId ", contactId); //!
+            await axios.delete(`/contacts/${contactId}`);
+            // const response = await axios.delete(`/contacts/${contactId}`); //! Ошибка Репеты
+            // console.log("deleteContact==>response.data", response.data); //!
+            // return response.data; //! Ошибка Репеты
+            return contactId
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message);
         }

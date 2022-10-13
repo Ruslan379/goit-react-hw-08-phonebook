@@ -38,8 +38,12 @@ const tasksSlice = createSlice({
         [deleteTask.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            const index = state.items.findIndex(task => task.id === action.payload);
-            state.items.splice(index, 1);
+            // const index = state.items.findIndex(task => task.id === action.payload);
+            // state.items.splice(index, 1);
+            // const newContact = state.items.filter(contact => contact.id !== action.payload);
+            console.log("action.payload", action.payload); //!
+            state.items = state.items.filter(contact => contact.id !== action.payload);
+            // state = { items: newContact }
         },
         [logOut.fulfilled](state) {
             state.items = [];
