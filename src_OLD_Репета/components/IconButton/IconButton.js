@@ -8,13 +8,12 @@ export default function IconButton({
 }) {
   return (
     <button
+      button
       type="button"
       className={styles.button}
       onClick={onClick}
       {...otherProps}
-    >
-      {children}
-    </button>
+    >{children}</button >
   );
 }
 

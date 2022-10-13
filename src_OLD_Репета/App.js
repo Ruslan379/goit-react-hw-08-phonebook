@@ -1,6 +1,6 @@
 import { useEffect, Suspense, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 import AppBar from './components/AppBar';
 import Container from './components/Container';
 import PrivateRoute from './components/PrivateRoute';
@@ -28,7 +28,7 @@ export default function App() {
       ) : (
         <>
           <AppBar />
-          <Switch>
+          <Routes>
             <Suspense fallback={<p>Загружаем...</p>}>
 
               <PublicRoute exact path="/">
@@ -51,7 +51,7 @@ export default function App() {
                 <UploadView />
               </PrivateRoute>
             </Suspense>
-          </Switch>
+          </Routes>
         </>
       )}
     </Container>
