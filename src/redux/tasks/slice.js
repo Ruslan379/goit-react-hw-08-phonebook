@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from 'redux/auth/operations';
-import { fetchTasks, addTask, deleteTask } from './operations';
+import { fetchTasks, addTask, deleteTask, editContact } from './operations';
 
 const handlePending = state => {
     state.isLoading = true;
@@ -30,21 +30,43 @@ const tasksSlice = createSlice({
             state.error = null;
             state.items = action.payload;
         },
+
         [addTask.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
             state.items.push(action.payload);
         },
+
         [deleteTask.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
             // const index = state.items.findIndex(task => task.id === action.payload);
             // state.items.splice(index, 1);
             // const newContact = state.items.filter(contact => contact.id !== action.payload);
-            console.log("action.payload", action.payload); //!
+            console.log("deleteTask==>action.payload:", action.payload); //!
             state.items = state.items.filter(contact => contact.id !== action.payload);
             // state = { items: newContact }
         },
+
+        [editContact.fulfilled](state, action) {
+            state.isLoading = false;
+            state.error = null;
+            // const index = state.items.findIndex(task => task.id === action.payload);
+            // state.items.splice(index, 1);
+            // const newContact = state.items.filter(contact => contact.id !== action.payload);
+            console.log("editContact==>action.payload:", action.payload); //!
+            console.log("state.items:", state.items); //!
+            const index = state.items.findIndex(task => task.id === action.payload.id);
+            console.log("index:", index); //!
+            console.log("state.items[index]:", state.items[index]); //!
+            state.items.splice(index, 1, action.payload);
+
+
+            // state.items = state.items.filter(contact => contact.id !== action.payload);
+            // state = { items: newContact }
+        },
+
+
         [logOut.fulfilled](state) {
             state.items = [];
             state.error = null;

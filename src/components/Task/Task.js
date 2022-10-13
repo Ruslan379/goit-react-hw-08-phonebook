@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteTask } from 'redux/tasks/operations';
+import { deleteTask, editContact } from 'redux/tasks/operations';
 // import { Spinner } from 'components/Spinner/Spinner';
 import css from './Task.module.css';
 
@@ -7,7 +7,18 @@ import css from './Task.module.css';
 
 export const Task = ({ id, name, number }) => {
     const dispatch = useDispatch();
+
     const handleDelete = () => dispatch(deleteTask(id));
+
+    const handleEdit = () => {
+        const newName = "RoseEDIT"
+        const newNumber = "000-00-00"
+        console.log("id:", id);
+        console.log("newName:", newName);
+        console.log("newNumber:", newNumber);
+
+        dispatch(editContact({ id, newName, newNumber }))
+    };
 
     return (
         <li className={css.ContactListItem}>
@@ -16,6 +27,16 @@ export const Task = ({ id, name, number }) => {
                 > {number}
                 </span>
             </p>
+            <button
+                type="button"
+                className={css.ContactListBtn}
+                onClick={handleEdit}
+            // onClick={() => deleteContact(id)}
+            // disabled={isDeleting}
+            >
+                Edit
+                {/* {isDeleting ? [<Spinner size="18" />, " Deleting..."] : "Delete"} */}
+            </button>
             <button
                 type="button"
                 className={css.ContactListBtn}

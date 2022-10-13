@@ -7,14 +7,13 @@ import { selectLoading } from 'redux/tasks/selectors';
 
 export default function Tasks() {
     const dispatch = useDispatch();
-    console.log("Tasks==>selectLoading", selectLoading);
     const isLoading = useSelector(selectLoading);
 
     useEffect(() => {
         dispatch(fetchTasks());
     }, [dispatch]);
 
-    console.log("Tasks==>isLoading", isLoading); //!
+    console.log("Tasks==>isLoading:", isLoading); //!
 
     return (
         <>

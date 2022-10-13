@@ -5,7 +5,7 @@ import css from './TaskList.module.css';
 
 export const TaskList = () => {
     const tasks = useSelector(selectAllTasks);
-    console.log("tasks", tasks); //!
+    console.log("TaskList==>tasks:", tasks); //!
 
     return (
         <ul className={css.ContactList}>
