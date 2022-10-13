@@ -1,7 +1,8 @@
 {
-  "name": "react-21-22",
+  "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Ruslan379.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.6",
