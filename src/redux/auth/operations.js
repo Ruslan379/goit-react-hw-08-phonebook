@@ -122,7 +122,7 @@ export const refreshUser = createAsyncThunk(
   //   password: "ghf479lkf"
   // };
 
-  //! Залогиненый контакт
+  //! Залогиненый user
   // const user4 = {
   //   name: "Sonya Furkina",
   //   email: "furkina@gmail.com",
