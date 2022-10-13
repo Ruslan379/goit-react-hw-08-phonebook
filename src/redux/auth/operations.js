@@ -122,9 +122,16 @@ export const refreshUser = createAsyncThunk(
   //   password: "ghf479lkf"
   // };
 
-  //! Залогиненый user
+
   // const user4 = {
   //   name: "Sonya Furkina",
   //   email: "furkina@gmail.com",
   //   password: "nbhy7564kjuy"
+  // };
+
+  //! Залогиненый user
+  // const user5 = {
+  //   name: "Danil Rooti",
+  //   email: "danilrooti@gmail.com",
+  //   password: "rooti6778ghyt"
   // };
