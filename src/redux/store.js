@@ -1,26 +1,39 @@
-import { configureStore } from '@reduxjs/toolkit'
-// import { combineReducers } from 'redux'; //? уже не надо с RTK Query
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { todosReducer } from './todos';
+import { authReducer } from './auth';
 
-import { filterSlice } from 'redux/filter/filterSlice';
-
-import { itemsAPIbyRTKQuery } from 'redux/items/itemsSliceRTKQuery';
-import { authAPIbyRTKQuery } from 'redux/auth/authSliceRTKQuery';
-
-
-
-
-//! +++++++++++ store with RTK Query (3-й вариант - РАБОТАЕТ!!!) +++++++++++++++
-//! export const getFilter = state => state.filter;
-export const store = configureStore({
-    reducer: {
-        [itemsAPIbyRTKQuery.reducerPath]: itemsAPIbyRTKQuery.reducer,
-        filter: filterSlice.reducer,
-        [authAPIbyRTKQuery.reducerPath]: authAPIbyRTKQuery.reducer,
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-    // middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), itemsAPIbyRTKQuery.middleware],
-    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), itemsAPIbyRTKQuery.middleware, authAPIbyRTKQuery.middleware],
+  }),
+];
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
+export const store = configureStore({
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    todos: todosReducer,
+  },
+  middleware,
+  devTools: process.env.NODE_ENV === 'development',
 });
 
-//! ++++++++++++++++++++++++++++ ВЕСЬ State +++++++++++++++++++++++++++++++++++
-// console.log("ВЕСЬ State из store.js ==> store.getState():", store.getState()); //!
-//! ____________________________________________________________________________
+export const persistor = persistStore(store);
