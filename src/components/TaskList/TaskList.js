@@ -5,14 +5,37 @@ import css from './TaskList.module.css';
 
 export const TaskList = () => {
     const tasks = useSelector(selectAllTasks);
+    console.log("tasks", tasks); //!
 
     return (
-        <ul className={css.list}>
-            {tasks.map(({ id, text }) => (
-                <li key={id}>
-                    <Task id={id} text={text} />
-                </li>
+        <ul className={css.ContactList}>
+            {tasks.map(({ id, name, number }) => (
+                <Task
+                    key={id}
+                    // key={Number(id)}
+                    id={id}
+                    // id={Number(id)}
+                    name={name}
+                    number={number}
+                />
             ))}
         </ul>
     );
+
+
+
+    // return (
+    //     <ul className={css.list}>
+    //         {tasks.map(({ id, text }) => (
+    //             <li key={id}>
+    //                 <Task id={id} text={text} />
+    //             </li>
+    //         ))}
+    //     </ul>
+    // );
 };
+
+
+// ContactList.propTypes = {
+//     visibleContacts: PropTypes.array.isRequired,
+// };
