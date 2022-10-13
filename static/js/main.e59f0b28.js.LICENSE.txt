@@ -71,7 +71,29 @@
  */
 
 /**
- * @remix-run/router v1.0.1
+ * @remix-run/router v1.0.2
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */
+
+/**
+ * React Router DOM v6.4.2
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */
+
+/**
+ * React Router v6.4.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -89,46 +111,3 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-/** @license React v17.0.2
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-//! +++++++ Хук useDispatch +++++++++++++
-
-//! ++++++++++++++++++ Хук useSelector  ++++++++++++++++++
-
-//! +-+-+-
-
-//! -------------- Разлогинить пользователя -------------------
-
-//! --------------Получить информацию о текущем пользователе -------------------
-
-//! alert с предупреждением о наявности контакта
-
-//! useState ===> name (аналог this.state.name)
-
-//! Делаем запрос на добавление контакта из mockapi.io/contacts 
-
-//! Залогинить пользователя
-
-//! Передача значений State (name, number) в App
-
-//! Получить информацию о текущем пользователе
-
-//! Принимаем (name, number) из ContactForm
-
-//! Разлогинить пользователя
-
-//! Создать нового пользователя
-
-//! для 3-го варианта store with RTK Query
-
-//! читает данные из state Redux-хранилища и подписывается на их обновление
-
-//!--------------------------- POST with RTK Query ---------------------------------
