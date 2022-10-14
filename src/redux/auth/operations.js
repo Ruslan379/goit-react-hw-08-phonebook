@@ -115,6 +115,7 @@ export const refreshUser = createAsyncThunk(
   //   password: "poi098lkj",
   // };
 
+//? Не работает
   // const user2 = {
   //   name: "Egor Rudik",
   //   email: "egor@gmail.com",
