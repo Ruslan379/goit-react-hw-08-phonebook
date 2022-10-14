@@ -18,14 +18,15 @@ import { Filter } from 'components/Filter/Filter';
 
 export default function Tasks() {
     const dispatch = useDispatch();
+
     const isLoading = useSelector(selectLoading);
-    console.log("Tasks==>isLoading:", isLoading); //!
+    // console.log("Tasks==>isLoading:", isLoading); //!
 
     const filter = useSelector(getFilter);
-    console.log("Tasks==>filter:", filter); //!
+    // console.log("Tasks==>filter:", filter); //!
 
     const contacts = useSelector(selectAllTasks);
-    console.log("Tasks==>contacts:", contacts); //!
+    // console.log("Tasks==>contacts:", contacts); //!
 
 
     useEffect(() => {
@@ -61,8 +62,6 @@ export default function Tasks() {
 
             <h2>Contacts</h2>
             <p>Total: {totalContacts}</p>
-
-            {/* <div>{isLoading && 'Request in progress...'}</div> */}
 
             {isLoading && <Loader />}
 

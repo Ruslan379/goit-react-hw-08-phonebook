@@ -58,7 +58,7 @@ const tasksSlice = createSlice({
             console.log("state.items:", state.items); //!
             const index = state.items.findIndex(task => task.id === action.payload.id);
             console.log("index:", index); //!
-            console.log("state.items[index]:", state.items[index]); //!
+            // console.log("state.items[index]:", state.items[index]); //!
             state.items.splice(index, 1, action.payload);
 
 
