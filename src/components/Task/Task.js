@@ -2,10 +2,11 @@ import { useState } from 'react'; //* +++
 import { useDispatch, useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 
-import { deleteTask, editContact } from 'redux/tasks/operations';
+// import { deleteTask, editContact } from 'redux/tasks/operations';
+import { deleteTask } from 'redux/tasks/operations';
 
 import { selectLoading } from 'redux/tasks/selectors';
-import { TaskEditor } from 'components/TaskEditor/TaskEditor';
+import { ContactEditor } from 'components/ContactEditor/ContactEditor';
 import { Spinner } from 'components/Spinner/Spinner';
 import { Modal } from 'components/Modal/Modal';
 
@@ -30,15 +31,15 @@ export const Task = ({ id, name, number }) => {
 
     const handleEdit = () => {
         toggleModal()
-        const newName = "RoseEDIT"
-        const newNumber = "000-00-00"
-        console.log("id:", id);
-        console.log("newName:", newName);
-        console.log("newNumber:", newNumber);
+        // const newName = "RoseEDIT"
+        // const newNumber = "000-00-00"
+        // console.log("id:", id);
+        // console.log("newName:", newName);
+        // console.log("newNumber:", newNumber);
 
         // TaskEditor(newName, newNumber)
 
-        dispatch(editContact({ id, newName, newNumber }))
+        // dispatch(editContact({ id, newName, newNumber }))
     };
     //! +++++++++++++++++++++++++++++++++++
 
@@ -75,7 +76,13 @@ export const Task = ({ id, name, number }) => {
 
                 {showModal && (
                     <Modal onClose={toggleModal}>
-                        <TaskEditor />
+                        <ContactEditor
+                            id={id}
+                            name={name}
+                            number={number}
+                            toggleModal={toggleModal}
+
+                        />
                     </Modal>
                 )}
             </li>
