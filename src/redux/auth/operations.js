@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/'; //! РЕПЕТА
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+// axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/'; //! РЕПЕТА
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';  //! ДЗ-8
 
 
 //! Utility to add JWT
@@ -21,7 +21,7 @@ const clearAuthHeader = () => {
  */
 //! Создать нового пользователя
 export const register = createAsyncThunk(
-    'auth/register',
+    'users/signup',
     async (credentials, thunkAPI) => {
         try {
             const res = await axios.post('/users/signup', credentials);
@@ -40,7 +40,7 @@ export const register = createAsyncThunk(
  */
 //! Залогинить пользователя
 export const logIn = createAsyncThunk(
-    'auth/login',
+    'users/login',
     async (credentials, thunkAPI) => {
         try {
             const res = await axios.post('/users/login', credentials);
@@ -58,7 +58,7 @@ export const logIn = createAsyncThunk(
  * headers: Authorization: Bearer token
  */
 //! Разлогинить пользователя
-export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
     try {
         await axios.post('/users/logout');
         // After a successful logout, remove the token from the HTTP header
@@ -103,7 +103,7 @@ export const refreshUser = createAsyncThunk(
 
 
 //? +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  //! --------------Добавленные user -------------------
+  //! --------------Добавленные users -------------------
   // const user1 = {
   //   name: "Ruslan Fate",
   //   email: "fate@gmail.com",
