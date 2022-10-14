@@ -3,12 +3,18 @@ import { addTask } from 'redux/tasks/operations';
 import css from './TaskEditor.module.css';
 
 
-
+// export const TaskEditor = (nameValue = "rus", numberValue = "") => {
 export const TaskEditor = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        // e.currentTarget.elements.name.value = "Ruslan";
+        // e.currentTarget.elements.number.value = numberValue;
+
+        // document.querySelector('#inputName').value = "nameValue";
+
 
         const form = e.currentTarget;
         const name = form.elements.name.value;
@@ -35,12 +41,13 @@ export const TaskEditor = () => {
                 <br />
                 <input
                     className={css.FormInput}
+                    id="inputName"
                     type="text"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     required
-                // value={name}
+                // value={nameValue}
                 // onChange={handleChange}
                 />
             </label>
@@ -57,7 +64,7 @@ export const TaskEditor = () => {
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
-                // value={number}
+                // value={numberValue}
                 // onChange={handleChange}
                 />
             </label>

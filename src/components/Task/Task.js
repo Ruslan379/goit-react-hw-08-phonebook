@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { deleteTask, editContact } from 'redux/tasks/operations';
+
+// import { TaskEditor } from 'components/TaskEditor/TaskEditor';
 // import { Spinner } from 'components/Spinner/Spinner';
 import css from './Task.module.css';
 
@@ -16,6 +18,8 @@ export const Task = ({ id, name, number }) => {
         console.log("id:", id);
         console.log("newName:", newName);
         console.log("newNumber:", newNumber);
+
+        // TaskEditor(newName, newNumber)
 
         dispatch(editContact({ id, newName, newNumber }))
     };
