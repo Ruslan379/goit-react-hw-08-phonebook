@@ -18,10 +18,11 @@ const clearAuthHeader = () => {
 /*
  * POST @ /users/signup
  * body: { name, email, password }
+ * После успешной регистрации добавляем токен в HTTP-заголовок
  */
 //! Создать нового пользователя
 export const register = createAsyncThunk(
-    'users/signup',
+    'auth/signup',
     async (credentials, thunkAPI) => {
         try {
             const res = await axios.post('/users/signup', credentials);
@@ -37,10 +38,11 @@ export const register = createAsyncThunk(
 /*
  * POST @ /users/login
  * body: { email, password }
+ * После успешного логина добавляем токен в HTTP-заголовок
  */
 //! Залогинить пользователя
 export const logIn = createAsyncThunk(
-    'users/login',
+    'auth/login',
     async (credentials, thunkAPI) => {
         try {
             const res = await axios.post('/users/login', credentials);
@@ -56,17 +58,20 @@ export const logIn = createAsyncThunk(
 /*
  * POST @ /users/logout
  * headers: Authorization: Bearer token
+ * После успешного логаута, удаляем токен из HTTP-заголовка
  */
 //! Разлогинить пользователя
-export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
-    try {
-        await axios.post('/users/logout');
-        // After a successful logout, remove the token from the HTTP header
-        clearAuthHeader();
-    } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-    }
-});
+export const logOut = createAsyncThunk(
+    'auth/logout',
+    async (_, thunkAPI) => {
+        try {
+            await axios.post('/users/logout');
+            // After a successful logout, remove the token from the HTTP header
+            clearAuthHeader();
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    });
 
 /*
  * GET @ /users/current
@@ -129,7 +134,7 @@ export const refreshUser = createAsyncThunk(
   //   password: "nbhy7564kjuy"
   // };
 
-  //! Залогиненый user
+  //! Залогиненый user на гите
   // const user5 = {
   //   name: "Danil Rooti",
   //   email: "danilrooti@gmail.com",
