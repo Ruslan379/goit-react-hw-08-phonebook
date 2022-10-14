@@ -6,7 +6,7 @@ import { fetchTasks } from 'redux/tasks/operations';
 import { selectLoading } from 'redux/tasks/selectors';
 
 import { getFilter } from 'redux/filter/filterSelectors';
-import { changesFilter } from 'redux/filter/filterSlice';
+// import { changesFilter } from 'redux/filter/filterSlice';
 
 import { selectAllTasks } from 'redux/tasks/selectors';
 
@@ -20,13 +20,13 @@ export default function Tasks() {
     const dispatch = useDispatch();
     const isLoading = useSelector(selectLoading);
     console.log("Tasks==>isLoading:", isLoading); //!
-    //! ++++++++++++++++++ Хук useSelector  ++++++++++++++++++
-    //! читает данные из state Redux-хранилища и подписывается на их обновление
+
     const filter = useSelector(getFilter);
     console.log("Tasks==>filter:", filter); //!
 
     const contacts = useSelector(selectAllTasks);
     console.log("Tasks==>contacts:", contacts); //!
+
 
     useEffect(() => {
         dispatch(fetchTasks());
@@ -36,10 +36,10 @@ export default function Tasks() {
 
     //! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //! запись значения из input-(Find contacts by name) в filter
-    const changeFilter = (event) => {
-        const filterValue = event.currentTarget.value;
-        dispatch(changesFilter({ filterValue }));
-    };
+    // const changeFilter = (event) => {
+    //     const filterValue = event.currentTarget.value;
+    //     dispatch(changesFilter({ filterValue }));
+    // };
 
     //! Создание нового массива объектов из contacts с учетом значения поиска из filter
     const getVisibleContacts = () => {
@@ -71,8 +71,8 @@ export default function Tasks() {
             {contacts.length > 0 && !isLoading && (
                 <>
                     <Filter
-                        value={filter}
-                        onChange={changeFilter}
+                    // value={filter}
+                    // onChange={changeFilter}
                     />
                     <TaskList
                         visibleContacts={visibleContacts}
