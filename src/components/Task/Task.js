@@ -33,7 +33,7 @@ export const Task = ({ id, name, number }) => {
             </p>
             <button
                 type="button"
-                className={css.ContactListBtn}
+                className={css.ContactListEditBtn}
                 onClick={handleEdit}
             // onClick={() => deleteContact(id)}
             // disabled={isDeleting}
@@ -43,7 +43,7 @@ export const Task = ({ id, name, number }) => {
             </button>
             <button
                 type="button"
-                className={css.ContactListBtn}
+                className={css.ContactListDeleteBtn}
                 onClick={handleDelete}
             // onClick={() => deleteContact(id)}
             // disabled={isDeleting}

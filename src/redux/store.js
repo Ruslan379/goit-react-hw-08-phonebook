@@ -1,5 +1,8 @@
 // import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'; //? OLD
 import { configureStore } from '@reduxjs/toolkit';
+
+import { filterSlice } from 'redux/filter/filterSlice';
+
 import {
     persistStore,
     persistReducer,
@@ -50,6 +53,8 @@ export const store = configureStore({
     reducer: {
         auth: persistReducer(authPersistConfig, authReducer),
         tasks: tasksReducer,
+        filter: filterSlice.reducer
+
     },
     middleware: (getDefaultMiddleware) => [
         ...getDefaultMiddleware({
