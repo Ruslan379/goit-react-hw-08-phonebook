@@ -1,5 +1,9 @@
-import { useDispatch } from 'react-redux';
-import { editContact } from 'redux/contacts/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { editContact } from 'redux/contacts/contactsOperations';
+
+import { selectLoading } from 'redux/contacts/contactsSelectors';
+import { Spinner } from 'components/Spinner/Spinner';
+
 import css from './ContactEditor.module.css';
 
 
@@ -7,18 +11,16 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
     // export const ContactEditor = ({ id, toggleModal }) => {
     const dispatch = useDispatch();
 
+    const isLoading = useSelector(selectLoading);
+    // console.log("ContactListItem==>isLoading:", isLoading); //!
+
     const handleSubmit = e => {
         e.preventDefault();
-
-        // e.currentTarget.elements.name.value = "Ruslan";
-        // e.currentTarget.elements.number.value = numberValue;
-
-        // document.querySelector('#inputName').value = "nameValue";
-
 
         const form = e.currentTarget;
         const newName = form.elements.name.value;
         const newNumber = form.elements.number.value;
+
         if (newName !== "" && newNumber !== "") {
             dispatch(editContact({ id, newName, newNumber }));
             form.reset();
@@ -27,6 +29,8 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
         }
         alert('Заполни поля Name и Number');
     };
+
+
 
     return (
         <form
@@ -37,8 +41,8 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
             <label
                 className={css.FormLabelEdit}
             >
-                Name
-                {/* {addition ? "Wait for add..." : "Name"} */}
+                {/* Name */}
+                {isLoading ? "Wait for add..." : "Name"}
                 <br />
                 <input
                     className={css.FormInputEdit}
@@ -55,8 +59,8 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
             <br />
 
             <label className={css.FormLabelEdit}>
-                Number
-                {/* {addition ? "..." : "Number"} */}
+                {/* Number */}
+                {isLoading ? "..." : "Number"}
                 <br />
                 <input
                     className={css.FormInputEdit}
@@ -74,11 +78,10 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
             <button
                 className={css.FormBtnEdit}
                 type="submit"
-            // onClick={toggleModal}
-            // disabled={addition}
+                disabled={isLoading}
             >
-                Edit contact
-                {/* {addition ? <Spinner size= "32">Add contact</Spinner>  : "Add contact"} */}
+                {/* Edit contact */}
+                {isLoading ? <Spinner size="32">Add contact</Spinner> : "Edit contact"}
 
             </button>
         </form>

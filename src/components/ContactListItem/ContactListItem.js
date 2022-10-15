@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 
 // import { deleteContact, editContact } from 'redux/contacts/operations';
-import { deleteContact } from 'redux/contacts/operations';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 
-import { selectLoading } from 'redux/contacts/selectors';
+import { selectLoading } from 'redux/contacts/contactsSelectors';
 import { ContactEditor } from 'components/ContactEditor/ContactEditor';
 import { Spinner } from 'components/Spinner/Spinner';
 import { Modal } from 'components/Modal/Modal';

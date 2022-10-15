@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ContactList } from 'components/ContactList/ContactList';
 import { ContactForm } from 'components/ContactForm/ContactForm';
-import { fetchContacts } from 'redux/contacts/operations';
-import { selectLoading } from 'redux/contacts/selectors';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
+import { selectLoading } from 'redux/contacts/contactsSelectors';
 
 import { getFilter } from 'redux/filter/filterSelectors';
 // import { changesFilter } from 'redux/filter/filterSlice';
 
-import { selectAllTasks } from 'redux/contacts/selectors';
+import { selectAllContacts } from 'redux/contacts/contactsSelectors';
 
 import { Container } from 'components/Container/Container';
 import { Loader } from 'components/Loader/Loader';
@@ -25,7 +25,7 @@ export default function Contacts() {
     const filter = useSelector(getFilter);
     // console.log("Contacts==>filter:", filter); //!
 
-    const contacts = useSelector(selectAllTasks);
+    const contacts = useSelector(selectAllContacts);
     // console.log("Contacts==>contacts:", contacts); //!
 
 
