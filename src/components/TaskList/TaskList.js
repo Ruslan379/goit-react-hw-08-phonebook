@@ -1,5 +1,5 @@
 // import { useSelector } from 'react-redux';
-import { Task } from '../Task/Task';
+import { ContactListItem } from '../ContactListItem/ContactListItem';
 // import { selectAllTasks } from 'redux/tasks/selectors';
 import css from './TaskList.module.css';
 
@@ -10,7 +10,7 @@ export const TaskList = ({ visibleContacts }) => {
     return (
         <ul className={css.ContactList}>
             {visibleContacts.map(({ id, name, number }) => (
-                <Task
+                <ContactListItem
                     key={id}
                     // key={Number(id)}
                     id={id}

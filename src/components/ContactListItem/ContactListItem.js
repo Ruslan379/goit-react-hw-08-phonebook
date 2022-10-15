@@ -10,17 +10,17 @@ import { ContactEditor } from 'components/ContactEditor/ContactEditor';
 import { Spinner } from 'components/Spinner/Spinner';
 import { Modal } from 'components/Modal/Modal';
 
-import css from './Task.module.css';
+import css from './ContactListItem.module.css';
 
 
 
-export const Task = ({ id, name, number }) => {
+export const ContactListItem = ({ id, name, number }) => {
     const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch();
 
     const isLoading = useSelector(selectLoading);
-    // console.log("Tasks==>isLoading:", isLoading); //!
+    // console.log("ContactListItem==>isLoading:", isLoading); //!
 
     const handleDelete = () => dispatch(deleteTask(id));
 
