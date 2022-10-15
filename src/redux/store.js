@@ -17,15 +17,6 @@ import { contactsReducer } from './contacts/contactsSlice';
 import { authReducer } from './auth/authSlice';
 
 
-//? OLD
-// const middleware = [
-//     ...getDefaultMiddleware({
-//         serializableCheck: {
-//             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//         },
-//     }),
-// ];
-
 
 //! Persisting token field from auth slice to localstorage
 const authPersistConfig = {
@@ -33,17 +24,6 @@ const authPersistConfig = {
     storage,
     whitelist: ['token'],
 };
-
-
-//? OLD
-// export const store = configureStore({
-//     reducer: {
-//         auth: persistReducer(authPersistConfig, authReducer),
-//         tasks: tasksReducer,
-//     },
-//     middleware,
-//     devTools: process.env.NODE_ENV === 'development',
-// });
 
 
 

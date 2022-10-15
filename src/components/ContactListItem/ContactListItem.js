@@ -1,10 +1,8 @@
-import { useState } from 'react'; //* +++
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-// import { deleteContact, editContact } from 'redux/contacts/operations';
 import { deleteContact } from 'redux/contacts/contactsOperations';
-
 import { selectLoading } from 'redux/contacts/contactsSelectors';
 import { ContactEditor } from 'components/ContactEditor/ContactEditor';
 import { Spinner } from 'components/Spinner/Spinner';
@@ -24,13 +22,14 @@ export const ContactListItem = ({ id, name, number }) => {
 
     const handleDelete = () => dispatch(deleteContact(id));
 
-    //! +++++++++++++++++++++++++++++++++++
+
     const toggleModal = () => {
         setShowModal(!showModal);
     };
 
     const handleEdit = () => {
         toggleModal()
+        //! +++++++++++++++++++++++++++++++++++
         // const newName = "RoseEDIT"
         // const newNumber = "000-00-00"
         // console.log("id:", id);
@@ -40,8 +39,9 @@ export const ContactListItem = ({ id, name, number }) => {
         // ContactForm(newName, newNumber)
 
         // dispatch(editContact({ id, newName, newNumber }))
+        //! +++++++++++++++++++++++++++++++++++
     };
-    //! +++++++++++++++++++++++++++++++++++
+
 
 
 
@@ -57,7 +57,6 @@ export const ContactListItem = ({ id, name, number }) => {
                     type="button"
                     className={css.ContactListEditBtn}
                     onClick={handleEdit}
-                    // onClick={() => deleteContact(id)}
                     disabled={isLoading}
                 >
                     {/* Edit */}

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import css from 'components/Modal/Modal.module.css' 
 
 
+
+
 const modalRoot = document.querySelector('#modal-root');
-
-
 
 
 export function Modal({ children, onClose }) {

@@ -22,9 +22,13 @@ const contactsSlice = createSlice({
         [fetchContacts.pending]: handlePending,
         [addContact.pending]: handlePending,
         [deleteContact.pending]: handlePending,
+        [editContact.pending]: handlePending,
+
         [fetchContacts.rejected]: handleRejected,
         [addContact.rejected]: handleRejected,
         [deleteContact.rejected]: handleRejected,
+        [editContact.rejected]: handleRejected,
+
         [fetchContacts.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
@@ -40,10 +44,12 @@ const contactsSlice = createSlice({
         [deleteContact.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
+            //! вариант Репеты:
             // const index = state.items.findIndex(task => task.id === action.payload);
             // state.items.splice(index, 1);
+            //! МОЙ вариант:
             // const newContact = state.items.filter(contact => contact.id !== action.payload);
-            console.log("deleteContact==>action.payload:", action.payload); //!
+            // console.log("deleteContact==>action.payload:", action.payload); //!
             state.items = state.items.filter(contact => contact.id !== action.payload);
             // state = { items: newContact }
         },
@@ -51,19 +57,12 @@ const contactsSlice = createSlice({
         [editContact.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            // const index = state.items.findIndex(task => task.id === action.payload);
-            // state.items.splice(index, 1);
-            // const newContact = state.items.filter(contact => contact.id !== action.payload);
-            console.log("editContact==>action.payload:", action.payload); //!
-            console.log("state.items:", state.items); //!
+            // console.log("editContact==>action.payload:", action.payload); //!
+            // console.log("state.items:", state.items); //!
             const index = state.items.findIndex(task => task.id === action.payload.id);
-            console.log("index:", index); //!
+            // console.log("index:", index); //!
             // console.log("state.items[index]:", state.items[index]); //!
             state.items.splice(index, 1, action.payload);
-
-
-            // state.items = state.items.filter(contact => contact.id !== action.payload);
-            // state = { items: newContact }
         },
 
 

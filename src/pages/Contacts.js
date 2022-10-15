@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { ContactList } from 'components/ContactList/ContactList';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectLoading } from 'redux/contacts/contactsSelectors';
 
 import { getFilter } from 'redux/filter/filterSelectors';
-// import { changesFilter } from 'redux/filter/filterSlice';
 
 import { selectAllContacts } from 'redux/contacts/contactsSelectors';
 
@@ -35,13 +35,6 @@ export default function Contacts() {
 
 
 
-    //! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //! запись значения из input-(Find contacts by name) в filter
-    // const changeFilter = (event) => {
-    //     const filterValue = event.currentTarget.value;
-    //     dispatch(changesFilter({ filterValue }));
-    // };
-
     //! Создание нового массива объектов из contacts с учетом значения поиска из filter
     const getVisibleContacts = () => {
         const normalizedFilter = filter.toLowerCase();
@@ -55,7 +48,6 @@ export default function Contacts() {
 
 
 
-
     return (
         <Container>
             <ContactForm />
@@ -65,14 +57,10 @@ export default function Contacts() {
 
             {isLoading && <Loader />}
 
-            {/* {!isLoading && <ContactList />} */}
-
             {contacts.length > 0 && !isLoading && (
                 <>
-                    <Filter
-                    // value={filter}
-                    // onChange={changeFilter}
-                    />
+                    <Filter />
+
                     <ContactList
                         visibleContacts={visibleContacts}
                     />

@@ -1,13 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
+
 //! GET @ /contacts
 export const fetchContacts = createAsyncThunk(
     'contacts/fetchAll',
     async (_, thunkAPI) => {
         try {
             const res = await axios.get('/contacts');
-            console.log("res.data:", res.data); //!
+            // console.log("res.data:", res.data); //!
             return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -33,10 +35,10 @@ export const deleteContact = createAsyncThunk(
     'contacts/deleteContact',
     async (contactId, thunkAPI) => {
         try {
-            console.log("contactId:", contactId); //!
+            // console.log("contactId:", contactId); //!
             await axios.delete(`/contacts/${contactId}`);
             // const response = await axios.delete(`/contacts/${contactId}`); //! Ошибка Репеты
-            // console.log("deleteContact==>response.data", response.data); //!
+            // console.log("deleteContact==>response.data", response.data); //! пустой объект
             // return response.data; //! Ошибка Репеты
             return contactId;
         } catch (e) {
@@ -52,8 +54,7 @@ export const editContact = createAsyncThunk(
         try {
             console.log("id:", id); //!
             const response = await axios.patch(`/contacts/${id}`, { name: newName, number: newNumber });
-            // const response = await axios.delete(`/contacts/${contactId}`); //! Ошибка Репеты
-            console.log("editContact==>response.data", response.data); //!
+            // console.log("editContact==>response.data", response.data); //!
             return response.data;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message);

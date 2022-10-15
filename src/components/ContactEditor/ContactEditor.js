@@ -2,10 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editContact } from 'redux/contacts/contactsOperations';
 import PropTypes from 'prop-types';
 
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
-import { selectAllContacts, selectLoading } from 'redux/contacts/contactsSelectors';
+import { selectLoading } from 'redux/contacts/contactsSelectors';
 import { Spinner } from 'components/Spinner/Spinner';
 
 import css from './ContactEditor.module.css';
@@ -13,9 +11,6 @@ import css from './ContactEditor.module.css';
 
 export const ContactEditor = ({ id, name, number, toggleModal }) => {
     const dispatch = useDispatch();
-
-    const contacts = useSelector(selectAllContacts);
-    // console.log("Contacts==>contacts:", contacts); //!
 
     const isLoading = useSelector(selectLoading);
     // console.log("ContactListItem==>isLoading:", isLoading); //!
@@ -27,20 +22,10 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
         const newName = form.elements.name.value;
         const newNumber = form.elements.number.value;
 
-        if (
-            contacts.find(item => item.name.toLowerCase() === newName.toLowerCase())
-        ) {
-            alert(`${name} уже есть в контактах.`);
-            // toast.error(`${newName} уже есть в контактах.`); //! Повторяется два раза ???
-            form.reset();
-            return;
-        }
-
         dispatch(editContact({ id, newName, newNumber }));
         form.reset();
         toggleModal()
         return;
-
     };
 
 
@@ -99,7 +84,6 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
 
                 </button>
             </form>
-            {/* <ToastContainer autoClose={1500} theme={"colored"} /> */}
         </>
     );
 }
