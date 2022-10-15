@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { addTask } from 'redux/tasks/operations';
-import css from './TaskEditor.module.css';
+import css from './ContactForm.module.css';
 
 
-// export const TaskEditor = (nameValue = "rus", numberValue = "") => {
-export const TaskEditor = () => {
+
+export const ContactForm = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = e => {

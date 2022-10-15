@@ -13,11 +13,15 @@ const styles = {
         textAlign: 'center',
         color: "#004f10"
     },
-    span: {
+    spanName: {
         fontWeight: 700,
         fontSize: 63,
         textAlign: 'center',
         color: "#7d0000"
+    },
+    spanWith: {
+        fontWeight: 500,
+        fontSize: 24,
     },
 };
 
@@ -31,10 +35,13 @@ export default function Home() {
     return (
         <div style={styles.container}>
             <h1 style={styles.title}>
-                <span style={styles.span} role="img" aria-label="Greeting icon">
+                <span style={styles.spanName} role="img" aria-label="Greeting icon">
                     💁 {user.name} <br />
                 </span>
-                Welcome to the HW-8 (with...)
+                Welcome to the HW-8
+                <span style={styles.spanWith}>
+                    &nbsp;(with createAsyncThunk)
+                </span>
             </h1>
         </div>
     );

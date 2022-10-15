@@ -37,7 +37,7 @@ export const ContactListItem = ({ id, name, number }) => {
         // console.log("newName:", newName);
         // console.log("newNumber:", newNumber);
 
-        // TaskEditor(newName, newNumber)
+        // ContactForm(newName, newNumber)
 
         // dispatch(editContact({ id, newName, newNumber }))
     };

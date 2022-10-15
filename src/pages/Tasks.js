@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TaskList } from 'components/TaskList/TaskList';
-import { TaskEditor } from 'components/TaskEditor/TaskEditor';
+import { ContactList } from 'components/ContactList/ContactList';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 import { fetchTasks } from 'redux/tasks/operations';
 import { selectLoading } from 'redux/tasks/selectors';
 
@@ -58,14 +58,14 @@ export default function Tasks() {
 
     return (
         <Container>
-            <TaskEditor />
+            <ContactForm />
 
             <h2>Contacts</h2>
             <p>Total: {totalContacts}</p>
 
             {isLoading && <Loader />}
 
-            {/* {!isLoading && <TaskList />} */}
+            {/* {!isLoading && <ContactList />} */}
 
             {contacts.length > 0 && !isLoading && (
                 <>
@@ -73,7 +73,7 @@ export default function Tasks() {
                     // value={filter}
                     // onChange={changeFilter}
                     />
-                    <TaskList
+                    <ContactList
                         visibleContacts={visibleContacts}
                     />
                 </>
