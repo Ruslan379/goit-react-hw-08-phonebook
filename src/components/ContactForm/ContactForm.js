@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addTask } from 'redux/tasks/operations';
+import { addContact } from 'redux/contacts/operations';
 import css from './ContactForm.module.css';
 
 
@@ -20,11 +20,11 @@ export const ContactForm = () => {
         const name = form.elements.name.value;
         const number = form.elements.number.value;
         if (name !== "" && number !== "") {
-            dispatch(addTask({ name, number }));
+            dispatch(addContact({ name, number }));
             form.reset();
             return;
         }
-        alert('Заполни текст заметки.');
+        alert('Заполни поля Name и Number');
     };
 
     return (

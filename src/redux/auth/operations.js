@@ -116,10 +116,9 @@ export const refreshUser = createAsyncThunk(
   //   password: "poi098lkj",
   // };
 
-//? Не работает
   // const user2 = {
   //   name: "Egor Rudik",
-  //   email: "egor@gmail.com",
+  //   email: "egor_rudik@gmail.com",
   //   password: "rty543yui"
   // };
 
@@ -142,3 +141,15 @@ export const refreshUser = createAsyncThunk(
   //   email: "danilrooti@gmail.com",
   //   password: "rooti6778ghyt"
   // };
+
+    // const user6 = {
+    // name: "Robert Hunt",
+    // email: "roberthunt@gmail.com",
+    // password: "hunt793edc"
+    // };
+
+    // const user7 = {
+    // name: "Stive Morgan",
+    // email: "stive@gmail.com",
+    // password: "stive379hyt"
+    // };

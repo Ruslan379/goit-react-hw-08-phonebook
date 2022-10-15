@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { editContact } from 'redux/tasks/operations';
+import { editContact } from 'redux/contacts/operations';
 import css from './ContactEditor.module.css';
 
 
@@ -25,7 +25,7 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
             toggleModal()
             return;
         }
-        alert('Заполни текст заметки.');
+        alert('Заполни поля Name и Number');
     };
 
     return (

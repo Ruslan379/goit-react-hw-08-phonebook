@@ -4,8 +4,8 @@ import { ContactListItem } from '../ContactListItem/ContactListItem';
 import css from './ContactList.module.css';
 
 export const ContactList = ({ visibleContacts }) => {
-    // const tasks = useSelector(selectAllTasks);
-    // console.log("ContactList==>tasks:", tasks); //!
+    // const contacts = useSelector(selectAllTasks);
+    // console.log("ContactList==>contacts:", contacts); //!
 
     return (
         <ul className={css.ContactList}>

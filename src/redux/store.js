@@ -1,6 +1,4 @@
-// import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'; //? OLD
 import { configureStore } from '@reduxjs/toolkit';
-
 import { filterSlice } from 'redux/filter/filterSlice';
 
 import {
@@ -13,10 +11,10 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { tasksReducer } from './tasks/slice';
-import { authReducer } from './auth/slice';
 
+import storage from 'redux-persist/lib/storage';
+import { contactsReducer } from './contacts/slice';
+import { authReducer } from './auth/slice';
 
 
 //? OLD
@@ -29,14 +27,12 @@ import { authReducer } from './auth/slice';
 // ];
 
 
-
-// Persisting token field from auth slice to localstorage
+//! Persisting token field from auth slice to localstorage
 const authPersistConfig = {
     key: 'auth',
     storage,
     whitelist: ['token'],
 };
-
 
 
 //? OLD
@@ -49,10 +45,12 @@ const authPersistConfig = {
 //     devTools: process.env.NODE_ENV === 'development',
 // });
 
+
+
 export const store = configureStore({
     reducer: {
         auth: persistReducer(authPersistConfig, authReducer),
-        tasks: tasksReducer,
+        contacts: contactsReducer,
         filter: filterSlice.reducer
 
     },

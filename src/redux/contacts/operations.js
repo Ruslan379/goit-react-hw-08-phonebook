@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-//! GET @ /tasks
-export const fetchTasks = createAsyncThunk(
-    'tasks/fetchAll',
+//! GET @ /contacts
+export const fetchContacts = createAsyncThunk(
+    'contacts/fetchAll',
     async (_, thunkAPI) => {
         try {
             const res = await axios.get('/contacts');
@@ -15,9 +15,9 @@ export const fetchTasks = createAsyncThunk(
     }
 );
 
-//! POST @ /tasks
-export const addTask = createAsyncThunk(
-    'tasks/addTask',
+//! POST @ /contacts
+export const addContact = createAsyncThunk(
+    'contacts/addContact',
     async ({ name, number }, thunkAPI) => {
         try {
             const response = await axios.post('/contacts', { name, number });
@@ -28,9 +28,9 @@ export const addTask = createAsyncThunk(
     }
 );
 
-//! DELETE @ /tasks/:id
-export const deleteTask = createAsyncThunk(
-    'tasks/deleteTask',
+//! DELETE @ /contacts/:id
+export const deleteContact = createAsyncThunk(
+    'contacts/deleteContact',
     async (contactId, thunkAPI) => {
         try {
             console.log("contactId:", contactId); //!
@@ -45,9 +45,9 @@ export const deleteTask = createAsyncThunk(
     }
 );
 
-//! PATCH @ /tasks/:id
+//! PATCH @ /contacts/:id
 export const editContact = createAsyncThunk(
-    'tasks/editContact',
+    'contacts/editContact',
     async ({ id, newName, newNumber }, thunkAPI) => {
         try {
             console.log("id:", id); //!
