@@ -102,9 +102,7 @@ export const ContactForm = () => {
     );
 }
 
-// ContactForm.propTypes = {
-//     onSubmit: PropTypes.func.isRequired,
-// };
+
 
 
 

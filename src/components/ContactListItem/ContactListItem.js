@@ -1,6 +1,6 @@
 import { useState } from 'react'; //* +++
 import { useDispatch, useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 // import { deleteContact, editContact } from 'redux/contacts/operations';
 import { deleteContact } from 'redux/contacts/contactsOperations';
@@ -90,26 +90,8 @@ export const ContactListItem = ({ id, name, number }) => {
     );
 };
 
-
-
-// export const Task = ({ id, text }) => {
-//     const dispatch = useDispatch();
-//     const handleDelete = () => dispatch(deleteTask(id));
-
-//     return (
-//         <div className={css.wrapper}>
-//             <p className={css.text}>{text}</p>
-//             <button type="button" className={css.button} onClick={handleDelete}>
-//                 Delete
-//             </button>
-//         </div>
-//     );
-// };
-
-
-// ContactListItem.propTypes = {
-//     id: PropTypes.string.isRequired,
-//     // id: PropTypes.number.isRequired,
-//     name: PropTypes.string.isRequired,
-//     number: PropTypes.string.isRequired,
-// };
+ContactListItem.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+};

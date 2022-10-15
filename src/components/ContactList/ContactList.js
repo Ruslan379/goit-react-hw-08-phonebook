@@ -1,7 +1,12 @@
 // import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { ContactListItem } from '../ContactListItem/ContactListItem';
 // import { selectAllTasks } from 'redux/tasks/selectors';
+
 import css from './ContactList.module.css';
+
+
 
 export const ContactList = ({ visibleContacts }) => {
     // const contacts = useSelector(selectAllTasks);
@@ -21,21 +26,9 @@ export const ContactList = ({ visibleContacts }) => {
             ))}
         </ul>
     );
-
-
-
-    // return (
-    //     <ul className={css.list}>
-    //         {tasks.map(({ id, text }) => (
-    //             <li key={id}>
-    //                 <Task id={id} text={text} />
-    //             </li>
-    //         ))}
-    //     </ul>
-    // );
 };
 
 
-// ContactList.propTypes = {
-//     visibleContacts: PropTypes.array.isRequired,
-// };
+ContactList.propTypes = {
+    visibleContacts: PropTypes.array.isRequired,
+};

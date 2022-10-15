@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { editContact } from 'redux/contacts/contactsOperations';
+import PropTypes from 'prop-types';
 
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -11,7 +12,6 @@ import css from './ContactEditor.module.css';
 
 
 export const ContactEditor = ({ id, name, number, toggleModal }) => {
-    // export const ContactEditor = ({ id, toggleModal }) => {
     const dispatch = useDispatch();
 
     const contacts = useSelector(selectAllContacts);
@@ -31,7 +31,7 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
             contacts.find(item => item.name.toLowerCase() === newName.toLowerCase())
         ) {
             alert(`${name} уже есть в контактах.`);
-            // toast.error(`${newName} уже есть в контактах.`);
+            // toast.error(`${newName} уже есть в контактах.`); //! Повторяется два раза ???
             form.reset();
             return;
         }
@@ -104,8 +104,11 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
     );
 }
 
-// ContactForm.propTypes = {
-//     onSubmit: PropTypes.func.isRequired,
-// };
+ContactEditor.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    toggleModal: PropTypes.func.isRequired,
+};
 
 

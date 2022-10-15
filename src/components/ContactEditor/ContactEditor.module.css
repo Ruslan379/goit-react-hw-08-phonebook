@@ -1,12 +1,6 @@
 /* import styled from '@emotion/styled'; */
 
 
-
-
-
-
-
-
 .FormEdit {
     display: flex;
     flex-direction: column;
@@ -63,6 +57,13 @@
     font-weight: 600;
     color: #612c00;
 }
+
+
+
+
+
+
+
 
 
 /* todo ========== OLD ====================== */

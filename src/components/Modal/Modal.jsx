@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-
 import PropTypes from 'prop-types';
 
 import css from 'components/Modal/Modal.module.css' 
@@ -11,15 +10,9 @@ const modalRoot = document.querySelector('#modal-root');
 
 
 
-
 export function Modal({ children, onClose }) {
 
   useEffect(() => {
-    //* Переносим handleKeyDown внутрь useEffect,
-    //*  чтобы не вносить в массив зависимостей:
-      //! React Hook useEffect имеет отсутствующую зависимость: 'handleKeyDown'. 
-      //! Либо включите его, либо удалите массив зависимостей: }, []);
-      
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
         onClose();
@@ -32,14 +25,6 @@ export function Modal({ children, onClose }) {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]); 
-
-
-  //* Переносим handleKeyDown внутрь useEffect
-  // const handleKeyDown = event => {
-  //   if (event.code === 'Escape') {
-  //     onClose();
-  //   }
-  // };
 
 
   const handleBackdropClick = event => {
@@ -66,7 +51,7 @@ export function Modal({ children, onClose }) {
 
 
 Modal.propTypes = {
-  // children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
