@@ -30,6 +30,7 @@ export const ContactForm = () => {
         if (
             contacts.find(item => item.name.toLowerCase() === name.toLowerCase())
         ) {
+            // alert(`${name} уже есть в контактах.`);
             toast.warning(`${name} уже есть в контактах.`);
             form.reset();
             return;
@@ -53,7 +54,7 @@ export const ContactForm = () => {
                     className={css.FormLabel}
                 >
                     {/* Name */}
-                    {isLoading ? "Wait for add..." : "Name"}
+                    {isLoading ? "Please wait..." : "Name"}
                     <br />
                     <input
                         className={css.FormInput}

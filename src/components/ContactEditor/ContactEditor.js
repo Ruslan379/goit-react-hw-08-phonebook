@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { editContact } from 'redux/contacts/contactsOperations';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 import { selectAllContacts, selectLoading } from 'redux/contacts/contactsSelectors';
 import { Spinner } from 'components/Spinner/Spinner';
@@ -30,7 +30,8 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
         if (
             contacts.find(item => item.name.toLowerCase() === newName.toLowerCase())
         ) {
-            toast.warning(`${newName} уже есть в контактах.`);
+            alert(`${name} уже есть в контактах.`);
+            // toast.error(`${newName} уже есть в контактах.`);
             form.reset();
             return;
         }
@@ -55,7 +56,7 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
                     className={css.FormLabelEdit}
                 >
                     {/* Name */}
-                    {isLoading ? "Wait for add..." : "Name"}
+                    {isLoading ? "Please wait..." : "Name"}
                     <br />
                     <input
                         className={css.FormInputEdit}
@@ -98,7 +99,7 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
 
                 </button>
             </form>
-            <ToastContainer autoClose={1500} theme={"colored"} />
+            {/* <ToastContainer autoClose={1500} theme={"colored"} /> */}
         </>
     );
 }
