@@ -6,9 +6,9 @@ const handlePending = state => {
     state.isLoading = true;
 };
 
-const handleRejected = (state, action) => {
+const handleRejected = (state, { payload }) => {
     state.isLoading = false;
-    state.error = action.payload;
+    state.error = payload;
 };
 
 const contactsSlice = createSlice({
@@ -29,40 +29,40 @@ const contactsSlice = createSlice({
         [deleteContact.rejected]: handleRejected,
         [editContact.rejected]: handleRejected,
 
-        [fetchContacts.fulfilled](state, action) {
+        [fetchContacts.fulfilled](state, { payload }) {
             state.isLoading = false;
             state.error = null;
-            state.items = action.payload;
+            state.items = payload;
         },
 
-        [addContact.fulfilled](state, action) {
+        [addContact.fulfilled](state, { payload }) {
             state.isLoading = false;
             state.error = null;
-            state.items.push(action.payload);
+            state.items.push(payload);
         },
 
-        [deleteContact.fulfilled](state, action) {
+        [deleteContact.fulfilled](state, { payload }) {
             state.isLoading = false;
             state.error = null;
             //! вариант Репеты:
-            // const index = state.items.findIndex(task => task.id === action.payload);
+            // const index = state.items.findIndex(task => task.id === payload);
             // state.items.splice(index, 1);
             //! МОЙ вариант:
-            // const newContact = state.items.filter(contact => contact.id !== action.payload);
-            // console.log("deleteContact==>action.payload:", action.payload); //!
-            state.items = state.items.filter(contact => contact.id !== action.payload);
+            // const newContact = state.items.filter(contact => contact.id !== payload);
+            // console.log("deleteContact==>payload:", payload); //!
+            state.items = state.items.filter(contact => contact.id !== payload);
             // state = { items: newContact }
         },
 
-        [editContact.fulfilled](state, action) {
+        [editContact.fulfilled](state, { payload }) {
             state.isLoading = false;
             state.error = null;
-            // console.log("editContact==>action.payload:", action.payload); //!
+            // console.log("editContact==>payload:", payload); //!
             // console.log("state.items:", state.items); //!
-            const index = state.items.findIndex(task => task.id === action.payload.id);
+            const index = state.items.findIndex(task => task.id === payload.id);
             // console.log("index:", index); //!
             // console.log("state.items[index]:", state.items[index]); //!
-            state.items.splice(index, 1, action.payload);
+            state.items.splice(index, 1, payload);
         },
 
 
