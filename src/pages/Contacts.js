@@ -57,7 +57,7 @@ export default function Contacts() {
 
             {isLoading && <Loader />}
 
-            {contacts.length > 0 && !isLoading && (
+            {contacts.length > 0 && (
                 <>
                     <Filter />
 
@@ -69,3 +69,5 @@ export default function Contacts() {
         </Container>
     );
 }
+
+// {contacts.length > 0 && !isLoading && (
