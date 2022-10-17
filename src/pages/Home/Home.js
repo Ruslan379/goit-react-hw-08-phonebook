@@ -5,14 +5,16 @@ import css from './Home.module.css'
 
 
 export default function Home() {
-    const { user } = useAuth();
+    const { user, isLoggedIn } = useAuth();
     console.log("user", user); //!
 
     return (
         <div className={css.container}>
             <h1 className={css.title}>
                 <span className={css.spanName} role="img" aria-label="Greeting icon">
-                    💁 {user.name} <br />
+                    💁 {isLoggedIn ? user.name : "Register or Log In"}
+                    {/* {isLoading ? [<Spinner size="18" />, " Editing..."] : "Edit"} */}
+                    <br />
                 </span>
                 Welcome to the HW-8
                 <span className={css.spanWith}>
@@ -22,3 +24,4 @@ export default function Home() {
         </div>
     );
 }
+// { user.name }
