@@ -8,7 +8,7 @@ import { Container } from 'components/Container/Container';
 import { fetchContactsFromMmockapiIo } from 'redux/uploadContacts/uploadContactsOperations';
 import { getUploadContacts } from 'redux/uploadContacts/uploadContactsSelectors';
 import { UploadContactsList } from 'components/UploadContactsList/UploadContactsList';
-
+import { selectAllContacts } from 'redux/contacts/contactsSelectors';
 
 
 
@@ -16,14 +16,18 @@ export default function UploadContacts() {
   const dispatch = useDispatch();
 
   const uploadContacts = useSelector(getUploadContacts);
-  console.log("Contacts==>uploadContacts:", uploadContacts); //!
+  console.log("UploadContacts==>uploadContacts:", uploadContacts); //!
 
+  const contacts = useSelector(selectAllContacts);
+  console.log("Contacts==>contacts:", contacts); //!
 
   // useEffect(() => {
   //   dispatch(fetchContactsFromMmockapiIo());
   // }, [dispatch]);
 
   const handlUploadContacts = () => dispatch(fetchContactsFromMmockapiIo());
+
+  // const handlAddUploadContacts = () => dispatch(AddUploadContacts());
 
   // const handleSubmit = e => {
   //   e.preventDefault();
@@ -41,15 +45,18 @@ export default function UploadContacts() {
     <Container>
       <button
         type="button"
-        // className={css.ContactListEditBtn}
+        // className={css.UploadContactsBtn}
         onClick={handlUploadContacts}
-      // disabled={isLoading}
+        disabled={uploadContacts.length > 0}
       >
         Загрузить контакты c API: mockapi.io
       </button>
       <UploadContactsList uploadContacts={uploadContacts} />
       <button
         type="button"
+        // className={css.AddUploadContactsBtn}
+        // onClick={handlAddUploadContacts}
+        disabled={uploadContacts.length === 0}
       >
         Добавить контакты c API: mockapi.io в список контактов
       </button>
