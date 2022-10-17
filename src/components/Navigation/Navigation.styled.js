@@ -39,7 +39,8 @@ export const LinkContacts = styled(NavLink)`
   &.active {
     /* color: #e84a5f; */
     color: white;
-    background-color: orangered;
+    /* background-color: orangered; */
+    background-color: green;
   }
 `;
 

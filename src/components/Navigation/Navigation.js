@@ -14,7 +14,7 @@ export const Navigation = () => {
 
     return (
         <nav>
-            <LinkHome to="/">
+            <LinkHome to="/" end>
                 Home
             </LinkHome>
             {isLoggedIn && (
