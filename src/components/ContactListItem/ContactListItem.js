@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import { selectLoading } from 'redux/contacts/contactsSelectors';
 import { ContactEditor } from 'components/ContactEditor/ContactEditor';
-import { Spinner } from 'components/Spinner/Spinner';
+// import { Spinner } from 'components/Spinner/Spinner';
 import { Modal } from 'components/Modal/Modal';
 
 import css from './ContactListItem.module.css';
@@ -59,8 +59,8 @@ export const ContactListItem = ({ id, name, number }) => {
                     onClick={handleEdit}
                     disabled={isLoading}
                 >
-                    {/* Edit */}
-                    {isLoading ? [<Spinner size="18" />, " Editing..."] : "Edit"}
+                    Edit
+                    {/* {isLoading ? [<Spinner size="18" />, " Editing..."] : "Edit"} */}
                 </button>
                 <button
                     type="button"
@@ -69,8 +69,8 @@ export const ContactListItem = ({ id, name, number }) => {
                     // onClick={() => deleteContact(id)}
                     disabled={isLoading}
                 >
-                    {/* Delete */}
-                    {isLoading ? [<Spinner size="18" />, " Deleting..."] : "Delete"}
+                    Delete
+                    {/* {isLoading ? [<Spinner size="18" />, " Deleting..."] : "Delete"} */}
                 </button>
 
                 {showModal && (
