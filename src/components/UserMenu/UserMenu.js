@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux';
+
 import { logOut } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks';
+
+import defaultAvatar from 'icons/default-avatar.png';
 import css from './UserMenu.module.css';
 
 export const UserMenu = () => {
@@ -10,7 +13,8 @@ export const UserMenu = () => {
 
     return (
         <div className={css.wrapper}>
-            <p className={css.username}>Welcome, {user.name} ({user.email})</p>
+            <img className={css.avatar} src={defaultAvatar} alt="" width="32" />
+            <p className={css.userName}><span className={css.welcome}>Welcome, </span> {user.name} ({user.email})</p>
             <button
                 className={css.btnLogout}
                 type="button"

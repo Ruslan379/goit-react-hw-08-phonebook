@@ -4,7 +4,16 @@
     gap: 12px;
 }
 
-.username {
+.avatar {
+    margin-right: 4px;
+}
+
+.welcome {
+    /* font-size: 28px; */
+    color: #ab0000;
+}
+
+.userName {
     font-weight: 700;
 }
 
@@ -19,3 +28,4 @@
     color: #2a363b;
     background-color: rgb(255, 153, 0);
 }
+
