@@ -2,24 +2,24 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 
-export const LinkHome = styled(NavLink)`
-  display: inline-block;
-  text-decoration: none;
-  padding: 8px 16px;
-  font-weight: 700;
-  /* border: solid 1px; */
-  border-radius: 4px;
-  color: #2a363b;
+// export const LinkHome = styled(NavLink)`
+//   display: inline-block;
+//   text-decoration: none;
+//   padding: 8px 16px;
+//   font-weight: 700;
+//   /* border: solid 1px; */
+//   border-radius: 4px;
+//   color: #2a363b;
 
-  &.active {
-    /* color: #e84a5f; */
-    color: white;
-    background-color: green;
-  }
-`;
+//   &.active {
+//     /* color: #e84a5f; */
+//     color: white;
+//     background-color: green;
+//   }
+// `;
 
 
-export const LinkContacts = styled(NavLink)`
+export const Link = styled(NavLink)`
   /* padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;

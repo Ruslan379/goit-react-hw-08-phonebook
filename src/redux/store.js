@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { filterSlice } from 'redux/filter/filterSlice';
 
 import {
     persistStore,
@@ -13,8 +12,10 @@ import {
 } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
-import { contactsReducer } from './contacts/contactsSlice';
-import { authReducer } from './auth/authSlice';
+import { authReducer } from 'redux/auth/authSlice';
+import { contactsReducer } from 'redux/contacts/contactsSlice';
+import { filterSlice } from 'redux/filter/filterSlice';
+import { uploadContactsReducer } from 'redux/uploadContacts/uploadContactsSlice';
 
 
 
@@ -31,7 +32,8 @@ export const store = configureStore({
     reducer: {
         auth: persistReducer(authPersistConfig, authReducer),
         contacts: contactsReducer,
-        filter: filterSlice.reducer
+        filter: filterSlice.reducer,
+        uploadContacts: uploadContactsReducer,
 
     },
     middleware: (getDefaultMiddleware) => [

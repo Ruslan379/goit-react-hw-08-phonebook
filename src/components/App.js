@@ -15,6 +15,7 @@ const HomePage = lazy(() => import('../pages/Home/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
+const UploadContactsPage = lazy(() => import('../pages/UploadContacts'));
 
 
 
@@ -52,6 +53,12 @@ export const App = () => {
                             path="/contacts"
                             element={
                                 <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+                            }
+                        />
+                        <Route
+                            path="/upload"
+                            element={
+                                <PrivateRoute redirectTo="/login" component={<UploadContactsPage />} />
                             }
                         />
                     </Route>

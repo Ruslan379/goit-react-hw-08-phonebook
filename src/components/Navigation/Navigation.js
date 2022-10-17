@@ -3,7 +3,7 @@
 import { useAuth } from 'hooks';
 
 // import css from './Navigation.module.css';
-import { LinkHome, LinkContacts } from './Navigation.styled.js'; //! "components/Navigation/Navigation.styled";
+import { Link } from './Navigation.styled.js'; //! "components/Navigation/Navigation.styled";
 
 
 
@@ -14,13 +14,19 @@ export const Navigation = () => {
 
     return (
         <nav>
-            <LinkHome to="/" end>
+            <Link to="/" end>
                 Home
-            </LinkHome>
+            </Link>
             {isLoggedIn && (
-                <LinkContacts to="/contacts">
-                    Contacts
-                </LinkContacts>
+                <>
+                    <Link to="/contacts">
+                        Contacts
+                    </Link>
+
+                    <Link to="/upload">
+                        Upload Contacts
+                    </Link>
+                </>
             )}
         </nav>
     );
