@@ -52,3 +52,11 @@
 .hide {
   display: none;
 }
+
+.TotalUploadContacts {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2400c4;
+}

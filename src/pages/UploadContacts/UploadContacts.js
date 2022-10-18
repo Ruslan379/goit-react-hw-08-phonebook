@@ -29,6 +29,8 @@ export default function UploadContacts() {
   const contacts = useSelector(selectAllContacts);
   console.log("Contacts==>contacts:", contacts); //!
 
+  const totalUploadContacts = uploadContacts.length;
+
 
   // useEffect(() => {
   //   dispatch(fetchContactsFromMmockapiIo());
@@ -57,14 +59,17 @@ export default function UploadContacts() {
         onClick={handlUploadContacts}
         disabled={uploadContacts.length > 0}
       >
-        Загрузить контакты c API: mockapi.io
+        Upload contacts from mockapi.io
       </button>
       <br />
 
       {isLoading && <Loader />}
 
       {uploadContacts.length > 0 && !isLoading && (
-        <UploadContactsList uploadContacts={uploadContacts} />
+        <>
+          <p className={css.TotalUploadContacts}>Total upload contacts from mockapi.io: {totalUploadContacts}</p>
+          <UploadContactsList uploadContacts={uploadContacts} />
+        </>
       )}
 
       <br />
@@ -74,7 +79,7 @@ export default function UploadContacts() {
         onClick={handlAddUploadContacts}
         disabled={uploadContacts.length === 0}
       >
-        Добавить контакты c API: mockapi.io в список контактов
+        Add upload contacts from mockapi.io in Contacts List
       </button>
     </Container>
   );
