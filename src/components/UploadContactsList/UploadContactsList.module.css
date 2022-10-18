@@ -28,6 +28,8 @@
 
   border: 1px solid #000000;
   border-radius: 4px;
+
+  background-color: #ffddc3;
 }
 
 
@@ -52,6 +54,7 @@
 
 
 .ContactListBtn {
+  /* display: none; */
   border: none;
   font: inherit;
   cursor: pointer;
@@ -72,4 +75,8 @@
 .ContactListBtn:hover,
 .ContactListBtn:focus {
   background-color: #be007f;
+}
+
+.hide {
+  display: none;
 }

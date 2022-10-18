@@ -12,7 +12,7 @@ export const Filter = () => {
   const dispatch = useDispatch();
 
   const filter = useSelector(getFilter);
-  console.log("Filter==>filter:", filter); //!
+  // console.log("Filter==>filter:", filter); //!
 
 //! запись значения из input-(Find contacts by name) в filter
     const changeFilter = (event) => {

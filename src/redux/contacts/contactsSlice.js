@@ -1,6 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from 'redux/auth/authOperations';
-import { fetchContacts, addContact, deleteContact, editContact } from './contactsOperations';
+import {
+    fetchContacts,
+    addContact,
+    deleteContact,
+    editContact,
+    fetchContactsFromMmockapiIo,
+    // AddUploadContacts
+} from './contactsOperations';
 
 const handlePending = state => {
     state.isLoading = true;
@@ -17,17 +24,20 @@ const contactsSlice = createSlice({
         items: [],
         isLoading: false,
         error: null,
+        uploadContacts: []
     },
     extraReducers: {
         [fetchContacts.pending]: handlePending,
         [addContact.pending]: handlePending,
         [deleteContact.pending]: handlePending,
         [editContact.pending]: handlePending,
+        [fetchContactsFromMmockapiIo.pending]: handlePending,
 
         [fetchContacts.rejected]: handleRejected,
         [addContact.rejected]: handleRejected,
         [deleteContact.rejected]: handleRejected,
         [editContact.rejected]: handleRejected,
+        [fetchContactsFromMmockapiIo.rejected]: handleRejected,
 
         [fetchContacts.fulfilled](state, { payload }) {
             state.isLoading = false;
@@ -39,6 +49,7 @@ const contactsSlice = createSlice({
             state.isLoading = false;
             state.error = null;
             state.items.push(payload);
+            state.uploadContacts = [];
         },
 
         [deleteContact.fulfilled](state, { payload }) {
@@ -65,6 +76,33 @@ const contactsSlice = createSlice({
             state.items.splice(index, 1, payload);
         },
 
+        [fetchContactsFromMmockapiIo.fulfilled](state, { payload }) {
+            state.isLoading = false;
+            state.error = null;
+            // state.uploadContacts = payload;
+            const newUploadContacts = payload.map(item => {
+                return {
+                    id: item.id,
+                    name: item.name,
+                    number: item.phone
+                };
+            });
+            // console.log("fetchContactsFromMmockapiIo ==> newUploadContacts:", newUploadContacts); //!
+            state.uploadContacts = newUploadContacts;
+        },
+
+        // [AddUploadContacts.fulfilled](state, { payload }) {
+        //     state.isLoading = false;
+        //     state.error = null;
+        //     const newUploadContacts = payload.map(item => {
+        //         return {
+        //             id: item.id,
+        //             name: item.name,
+        //             number: item.phone
+        //         };
+        //     });
+        //     state.items = [...state.items, ...newUploadContacts]
+        // },
 
         [logOut.fulfilled](state) {
             state.items = [];

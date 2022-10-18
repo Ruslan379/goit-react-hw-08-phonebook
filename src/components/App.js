@@ -15,7 +15,7 @@ const HomePage = lazy(() => import('../pages/Home/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
-const UploadContactsPage = lazy(() => import('../pages/UploadContacts'));
+const UploadContactsPage = lazy(() => import('../pages/UploadContacts/UploadContacts'));
 
 
 

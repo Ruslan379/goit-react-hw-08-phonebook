@@ -15,7 +15,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from 'redux/auth/authSlice';
 import { contactsReducer } from 'redux/contacts/contactsSlice';
 import { filterSlice } from 'redux/filter/filterSlice';
-import { uploadContactsReducer } from 'redux/uploadContacts/uploadContactsSlice';
+// import { uploadContactsReducer } from 'redux/uploadContacts/uploadContactsSlice';
 
 
 
@@ -33,7 +33,7 @@ export const store = configureStore({
         auth: persistReducer(authPersistConfig, authReducer),
         contacts: contactsReducer,
         filter: filterSlice.reducer,
-        uploadContacts: uploadContactsReducer,
+        // uploadContacts: uploadContactsReducer,
 
     },
     middleware: (getDefaultMiddleware) => [
