@@ -19,10 +19,17 @@ export const ContactEditor = ({ id, name, number, toggleModal }) => {
         e.preventDefault();
 
         const form = e.currentTarget;
-        const newName = form.elements.name.value;
-        const newNumber = form.elements.number.value;
+        // const newName = form.elements.name.value; //! 1-й вариант
+        // const newNumber = form.elements.number.value; //! 1-й вариант
 
-        dispatch(editContact({ id, newName, newNumber }));
+        // dispatch(editContact({ id, newName, newNumber })); //! 1-й вариант
+        dispatch(
+            editContact({
+                id,
+                name: form.elements.name.value,
+                number: form.elements.number.value,
+            })
+        ); //! 2-й вариант
         form.reset();
         toggleModal()
         return;

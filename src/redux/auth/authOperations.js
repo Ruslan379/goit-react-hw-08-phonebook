@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { toast } from 'react-toastify';
+
+
+
+
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 
@@ -28,6 +33,8 @@ export const register = createAsyncThunk(
             setAuthHeader(res.data.token);
             return res.data;
         } catch (error) {
+            console.log(error); //!
+            toast.error(`Ошибка запроса: ${error.message === "Request failed with status code 400" ? "Ошибка создания пользователя" : error.message}`, { position: "top-center", autoClose: 2000 });
             return thunkAPI.rejectWithValue(error.message);
         }
     }
@@ -47,6 +54,8 @@ export const logIn = createAsyncThunk(
             setAuthHeader(res.data.token);
             return res.data;
         } catch (error) {
+            console.log(error); //!
+            toast.error(`Ошибка запроса: ${error.message === "Request failed with status code 400" ? "Ошибка входа" : error.message}`, { position: "top-center", autoClose: 2000 });
             return thunkAPI.rejectWithValue(error.message);
         }
     }
@@ -65,6 +74,8 @@ export const logOut = createAsyncThunk(
             await axios.post('/users/logout');
             clearAuthHeader();
         } catch (error) {
+            console.log(error); //!
+            toast.error(`Ошибка запроса: ${error.message === "Request failed with status code 401" ? "Отсутствует заголовок с токеном авторизации" : error.message}`, { position: "top-center", autoClose: 2000 });
             return thunkAPI.rejectWithValue(error.message);
         }
     });
@@ -95,6 +106,8 @@ export const refreshUser = createAsyncThunk(
             const res = await axios.get('/users/current');
             return res.data;
         } catch (error) {
+            console.log(error); //!
+            toast.error(`Ошибка запроса: ${error.message === "Request failed with status code 401" ? "Отсутствует заголовок с токеном авторизации" : error.message}`, { position: "top-center", autoClose: 2000 });
             return thunkAPI.rejectWithValue(error.message);
         }
     }
