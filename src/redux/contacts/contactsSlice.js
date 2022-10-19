@@ -9,6 +9,9 @@ import {
     // AddUploadContacts
 } from './contactsOperations';
 
+
+
+
 const handlePending = state => {
     state.isLoading = true;
 };
@@ -17,6 +20,7 @@ const handleRejected = (state, { payload }) => {
     state.isLoading = false;
     state.error = payload;
 };
+
 
 const contactsSlice = createSlice({
     name: 'contacts',
