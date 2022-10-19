@@ -36,8 +36,8 @@ export default function UploadContacts() {
   //   dispatch(fetchContactsFromMmockapiIo());
   // }, [dispatch]);
 
-
-  const handlUploadContacts = () => dispatch(fetchContactsFromMmockapiIo());
+  //! добавлен сразу в onClick ==> Upload contacts from mockapi.io
+  // const handlUploadContacts = () => dispatch(fetchContactsFromMmockapiIo());
 
   const handlAddUploadContacts = () => {
     for (const uploadContact of uploadContacts) {
@@ -56,7 +56,8 @@ export default function UploadContacts() {
       <button
         type="button"
         className={uploadContacts.length === 0 ? css.UploadContactsBtn : css.hide}
-        onClick={handlUploadContacts}
+        // onClick={handlUploadContacts}
+        onClick={() => dispatch(fetchContactsFromMmockapiIo())}
         disabled={uploadContacts.length > 0}
       >
         Upload contacts from mockapi.io
