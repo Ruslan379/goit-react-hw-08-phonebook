@@ -1,12 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import { deleteContactFromMmockapiIo } from 'redux/contacts/contactsOperations';
 
 import css from 'components/UploadContactsList/UploadContactsList.module.css' 
 
 
 
 
-export const UploadContactsList = ({ uploadContacts }) => (
+export const UploadContactsList = ({ uploadContacts }) => {
+  const dispatch = useDispatch();
+
+  // const handleDeleteContact = () => dispatch(deleteContactFromMmockapiIo(id));
+  const handleDeleteContact = id => dispatch(deleteContactFromMmockapiIo(id));
+
+return (
   <ul className={css.ContactList}>
     {uploadContacts.map(({ id, name, number }) => (
       <li
@@ -23,14 +32,14 @@ export const UploadContactsList = ({ uploadContacts }) => (
         <button
           type="button"
           className={css.ContactListBtn}
-          // onClick={() => onDeleteTodo(id)}
+          onClick={() => handleDeleteContact(id)}
         >
           Delete
         </button>
       </li>
     ))}
   </ul>
-);
+)};
 
 
 UploadContactsList.propTypes = {

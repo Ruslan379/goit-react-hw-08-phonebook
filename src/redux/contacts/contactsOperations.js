@@ -82,7 +82,7 @@ export const editContact = createAsyncThunk(
     }
 );
 
-
+//? GET @ /contacts - получить ВСЕ контакты с mockapi.io
 export const fetchContactsFromMmockapiIo = createAsyncThunk(
     'contacts/fetchContactsFromMmockapiIo',
     async (_, { rejectWithValue }) => {
@@ -97,6 +97,24 @@ export const fetchContactsFromMmockapiIo = createAsyncThunk(
         }
     },
 );
+
+//? DELETE @ /contacts/:id - удалить контакт с mockapi.io по его id
+export const deleteContactFromMmockapiIo = createAsyncThunk(
+    'contacts/deleteContactFromMmockapiIo',
+    async (contactId, thunkAPI) => {
+        try {
+            // console.log("contacts/deleteContactFromMmockapiIo==>contactId:", contactId); //!
+            await axios.delete(`https://6326c1ee70c3fa390f9bc51d.mockapi.io/contacts/${contactId}`);
+            return contactId;
+        } catch (error) {
+            console.log(error); //!
+            toast.error(`Ошибка запроса: ${error.message === "Request failed with status code 404" ? "Нет такой коллекции пользователей" : error.message}`, { position: "top-center", autoClose: 2000 });
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
+
 
 
 // export const AddUploadContacts = createAsyncThunk(

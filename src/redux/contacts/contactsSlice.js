@@ -6,6 +6,7 @@ import {
     deleteContact,
     editContact,
     fetchContactsFromMmockapiIo,
+    deleteContactFromMmockapiIo
     // AddUploadContacts
 } from './contactsOperations';
 
@@ -36,12 +37,14 @@ const contactsSlice = createSlice({
         [deleteContact.pending]: handlePending,
         [editContact.pending]: handlePending,
         [fetchContactsFromMmockapiIo.pending]: handlePending,
+        [deleteContactFromMmockapiIo.pending]: handlePending,
 
         [fetchContacts.rejected]: handleRejected,
         [addContact.rejected]: handleRejected,
         [deleteContact.rejected]: handleRejected,
         [editContact.rejected]: handleRejected,
         [fetchContactsFromMmockapiIo.rejected]: handleRejected,
+        [deleteContactFromMmockapiIo.rejected]: handleRejected,
 
         [fetchContacts.fulfilled](state, { payload }) {
             state.isLoading = false;
@@ -93,6 +96,16 @@ const contactsSlice = createSlice({
             });
             // console.log("fetchContactsFromMmockapiIo ==> newUploadContacts:", newUploadContacts); //!
             state.uploadContacts = newUploadContacts;
+        },
+
+        [deleteContactFromMmockapiIo.fulfilled](state, { payload }) {
+            state.isLoading = false;
+            state.error = null;
+            //! МОЙ вариант:
+            // const newContact = state.uploadContacts.filter(contact => contact.id !== payload);
+            // console.log("deleteContact==>payload:", payload); //!
+            state.uploadContacts = state.uploadContacts.filter(contact => contact.id !== payload);
+            // state = { uploadContacts: newContact }
         },
 
         // [AddUploadContacts.fulfilled](state, { payload }) {
