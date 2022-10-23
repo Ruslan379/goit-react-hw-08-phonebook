@@ -5,7 +5,7 @@ import { deleteContact } from 'redux/contacts/contactsOperations';
 import { selectLoading, selectAllContacts } from 'redux/contacts/contactsSelectors';
 
 import { Container } from 'components/Container/Container';
-import { Spinner } from 'components/Spinner/Spinner';
+// import { Spinner } from 'components/Spinner/Spinner';
 
 import css from './DeleteAllContacts.module.css';
 
@@ -47,8 +47,8 @@ export function DeleteAllContacts() {
         onClick={handlDeleteAllContacts}
         disabled={isLoading}
       >
-        {/* Delete all Contacts */}
-        {isLoading ? [<Spinner size="18" />, " Deleting all Contacts..."] : "Delete all Contacts"}
+        Delete all Contacts
+        {/* {isLoading ? [<Spinner size="18" />, " Deleting all Contacts..."] : "Delete all Contacts"} */}
       </button>
     </Container>
   );

@@ -66,9 +66,12 @@ export default function Contacts() {
                         visibleContacts={visibleContacts}
                     />
 
-                    <DeleteAllContacts />
+                    {/* <DeleteAllContacts /> */}
                 </>
             )}
+
+            {contacts.length > 0 && !isLoading && <DeleteAllContacts />}
+
         </Container>
     );
 }
