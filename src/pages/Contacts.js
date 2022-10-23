@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ContactList } from 'components/ContactList/ContactList';
-import { ContactForm } from 'components/ContactForm/ContactForm';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectLoading } from 'redux/contacts/contactsSelectors';
 
@@ -11,8 +9,11 @@ import { getFilter } from 'redux/filter/filterSelectors';
 import { selectAllContacts } from 'redux/contacts/contactsSelectors';
 
 import { Container } from 'components/Container/Container';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Loader } from 'components/Loader/Loader';
 import { Filter } from 'components/Filter/Filter';
+import { ContactList } from 'components/ContactList/ContactList';
+import { DeleteAllContacts } from 'components/DeleteAllContacts/DeleteAllContacts';
 
 
 
@@ -64,6 +65,8 @@ export default function Contacts() {
                     <ContactList
                         visibleContacts={visibleContacts}
                     />
+
+                    <DeleteAllContacts />
                 </>
             )}
         </Container>
